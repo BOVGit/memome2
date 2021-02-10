@@ -1,40 +1,42 @@
-<!-- v1.0.1  2021-02-06 -->
+<!-- v1.0.2  2021-02-10 -->
 <!DOCTYPE html>
-<html lang="ru">
 
 <head>
   <meta charset="utf-8">
-  <title>Памятка</title>
+  <title>Memory</title>
+  <link rel="stylesheet" href="css/memory.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
 
-  <noscript><em>Включите в настройках JavaScript для работы приложения !!!</em></noscript>
-
   <header>
-    <div>Памятка 2</div>
+    <div>Memory</div>
   </header>
 
   <main>
     <br>
     <form>
-      <input class="inputText1" type="text" id="elemTextDate1" title="Date1">
-      <input class="inputCheck" type="checkbox" id="elemCheckRow1Delo1">
-      <input class="inputCheck" type="checkbox" id="elemCheckRow1Delo2">
+      <input class="buttonRefresh" type="button" value="Refresh dates" id="buttonRefresh" title="Refresh dates">
       <br><br>
-      <input class="inputText2" type="text" id="elemTextDate1" title="Date1">
-      <input class="inputCheck" type="checkbox" id="elemCheckRow1Delo1">
-      <input class="inputCheck" type="checkbox" id="elemCheckRow1Delo2">
+      <input type="text" id="elemTextDate1" title="Date1">
+      <input class="inputCheck" type="checkbox" id="elemCheckRow1Task1" title="Check Task1 for Date1">
+      <input class="inputCheck" type="checkbox" id="elemCheckRow1Task2" title="Check Task2 for Date1">
+      <br><br>
+      <input type="text" id="elemTextDate2" title="Date2">
+      <input class="inputCheck" type="checkbox" id="elemCheckRow2Task1" title="Check Task1 for Date2">
+      <input class="inputCheck" type="checkbox" id="elemCheckRow2Task2" title="Check Task2 for Date2">
     </form>
   </main>
 
   <footer>
     <br>
-    brogit © 2021
+    bovgit © 2021
   </footer>
 
-  <script src="memory.js"></script>
+  <noscript><em>You need to enable JavaScript to run this app !!!</em></noscript>
+
+  <script src="js/memory.js"></script>
 </body>
 
 </html>
