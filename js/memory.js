@@ -1,5 +1,8 @@
 //v1.0.2 2021-02-10
-let urlHttpServiceQuote = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=text&key=1&lang=';
+//let urlHttpServiceQuote = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=text&key=1&lang=';
+//let urlHttpServiceQuote = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&jsonp=parseQuote&key=1&lang=';
+// let urlHttpServiceQuote = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&jsonp=parseQuote';
+let urlHttpServiceQuote = 'http://rzhunemogu.ru/Rand.aspx?CType=5'; //return xml
 
 // ------------- On-Click ---------------
 
@@ -44,7 +47,7 @@ function refreshDates() {
     document.getElementById('elemCheckRow2Task2').checked = false;
   }
 
-  fillQuote('ru');
+  // fillQuote('ru');
 }
 
 function getDataFromStorageAndFillForm() {
@@ -70,7 +73,7 @@ function setDate(dateName) {
 
 //rowTaskName: 'Row1Task1', 'Row1Task2', ...
 function setCheckRowTask(rowTaskName) {
-  v = localStorage.getItem(rowTaskName + 'Checked');
+  let v = localStorage.getItem(rowTaskName + 'Checked');
   document.getElementById('elemCheck' + rowTaskName).checked = (v === '1' ? true : false);
 }
 
@@ -98,11 +101,12 @@ function saveCheckToStorage(rowTaskName) {
 
 ///////////////////////////////////////////////////////////
 
-//------------------------------------------------------
 //lang: 'ru', 'en', ...
 async function fillQuote(lang) {
   let quote = 'Remember important things !';
-  const url = urlHttpServiceQuote + lang;
+  // const url = urlHttpServiceQuote + lang;
+  const url = urlHttpServiceQuote;
+
   const response = await fetch(url);
   if (response.ok) { // HTTP-state in 200-299
     const textObj = await response.text(); // read answer in text
@@ -112,6 +116,10 @@ async function fillQuote(lang) {
   };
   document.querySelector('.quote').textContent = quote;
 }
+
+// function parseQuote(response) {
+//   document.querySelector('.quote').textContent = response.quoteText + ' (' + response.quoteAuthor + ')';
+// }
 
 ///////////////////////////////////////////////////////////
 
