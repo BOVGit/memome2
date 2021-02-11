@@ -1,12 +1,21 @@
-/* v1.0.1  2021-02-10 */
+/* v1.0.2  2021-02-11 */
+
+.quote {
+  font-size: small;
+  font-style: italic;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+}
 
 .buttonRefresh {
   font-size: medium;
-  margin-left: 1vw;
 }
 
 .inputCheck {
-  margin-left: 5vw;
+  margin-left: 15%;
   transform: scale(1.5);
   /* zoom */
 }

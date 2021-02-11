@@ -1,5 +1,6 @@
-<!-- v1.0.2  2021-02-10 -->
+<!-- v1.0.3  2021-02-11 -->
 <!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
@@ -11,21 +12,34 @@
 <body>
 
   <header>
-    <div>Memory</div>
+    <div class="quote">Remember important things !</div>
   </header>
 
   <main>
     <br>
+    <input class="buttonRefresh" type="button" value="Refresh dates" id="buttonRefresh" title="Refresh dates">
+    <br><br>
     <form>
-      <input class="buttonRefresh" type="button" value="Refresh dates" id="buttonRefresh" title="Refresh dates">
-      <br><br>
-      <input type="text" id="elemTextDate1" title="Date1">
-      <input class="inputCheck" type="checkbox" id="elemCheckRow1Task1" title="Check Task1 for Date1">
-      <input class="inputCheck" type="checkbox" id="elemCheckRow1Task2" title="Check Task2 for Date1">
-      <br><br>
-      <input type="text" id="elemTextDate2" title="Date2">
-      <input class="inputCheck" type="checkbox" id="elemCheckRow2Task1" title="Check Task1 for Date2">
-      <input class="inputCheck" type="checkbox" id="elemCheckRow2Task2" title="Check Task2 for Date2">
+      <fieldset>
+        <legend><em><strong>Check tasks</strong></em></legend>
+        <div class="wrapper">
+          <div>Date</div>
+          <div>Morning</div>
+          <div>Evening</div>
+        </div>
+        <br>
+        <div class="wrapper">
+          <input class="inputText" type="text" id="elemTextDate1" title="Date1" readonly>
+          <input class="inputCheck" type="checkbox" id="elemCheckRow1Task1" title="Check Task1 for Date1">
+          <input class="inputCheck" type="checkbox" id="elemCheckRow1Task2" title="Check Task2 for Date1">
+        </div>
+        <br>
+        <div class="wrapper">
+          <input class="inputText" type="text" id="elemTextDate2" title="Date2" readonly>
+          <input class="inputCheck" type="checkbox" id="elemCheckRow2Task1" title="Check Task1 for Date2">
+          <input class="inputCheck" type="checkbox" id="elemCheckRow2Task2" title="Check Task2 for Date2">
+        </div>
+      </fieldset>
     </form>
   </main>
 

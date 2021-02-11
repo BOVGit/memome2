@@ -1,4 +1,5 @@
 //v1.0.2 2021-02-10
+let urlHttpServiceQuote = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=text&key=1&lang=';
 
 // ------------- On-Click ---------------
 
@@ -42,6 +43,8 @@ function refreshDates() {
     document.getElementById('elemCheckRow2Task1').checked = false;
     document.getElementById('elemCheckRow2Task2').checked = false;
   }
+
+  fillQuote('ru');
 }
 
 function getDataFromStorageAndFillForm() {
@@ -91,6 +94,23 @@ function saveDateToStorage(dateName) {
 function saveCheckToStorage(rowTaskName) {
   let v = document.getElementById('elemCheck' + rowTaskName).checked;
   localStorage.setItem(rowTaskName + 'Checked', v ? '1' : '0');
+}
+
+///////////////////////////////////////////////////////////
+
+//------------------------------------------------------
+//lang: 'ru', 'en', ...
+async function fillQuote(lang) {
+  let quote = 'Remember important things !';
+  const url = urlHttpServiceQuote + lang;
+  const response = await fetch(url);
+  if (response.ok) { // HTTP-state in 200-299
+    const textObj = await response.text(); // read answer in text
+    quote = textObj;
+  } else {
+    console.log(url + ', response-error: ' + response.status);
+  };
+  document.querySelector('.quote').textContent = quote;
 }
 
 ///////////////////////////////////////////////////////////
