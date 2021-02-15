@@ -1,12 +1,15 @@
-//v1.0.3 2021-02-12
+//v1.0.4 2021-02-15
 //let urlHttpServiceQuote = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=text&key=1&lang=';
 //let urlHttpServiceQuote = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&jsonp=parseQuote&key=1&lang=';
 // let urlHttpServiceQuote = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&jsonp=parseQuote';
 // let urlHttpServiceQuote = 'http://rzhunemogu.ru/Rand.aspx?CType=5'; //return xml
 
+let langRU = 'RU', langEN = 'EN';
+let curLang = langRU;
+
 // ------------- On-Click ---------------
 
-buttonRefresh.onclick = () => refreshDates();
+// buttonRefresh.onclick = () => refreshData();
 
 elemTextDate1.onchange = () => setAllDataToStorage();
 elemTextDate2.onchange = () => setAllDataToStorage();
@@ -16,37 +19,44 @@ elemCheckRow1Task2.onclick = () => setAllDataToStorage();
 elemCheckRow2Task1.onclick = () => setAllDataToStorage();
 elemCheckRow2Task2.onclick = () => setAllDataToStorage();
 
-langSelect.onchange = () => setLang();
+langSelect.onchange = () => changeLang();
 
-refreshDates();
+refreshData();
 
 ///////////////////////////////////////////////////////////
 
-function isLangRu() {
+function setCurLang() {
   const elem = document.getElementById('langSelect');
   const sel = elem.selectedIndex;
-  if (sel === -1) { return true };
-  const option = elem.options[sel].text;
-  if (option === 'RU') { return true };
-  return false;
+
+  // if (sel === -1) { return true };
+  // const option = elem.options[sel].text;
+  // if (option === 'RU') { return true };
+  // return false;
+
+  curLang = (sel === -1 || elem.options[sel].text === langRU) ? langRU : langEN;
 }
 
-function setLang() {
-  let classBlock = 'quote ';
-  let headQuote, headButtonRefresh, headCheckTasks, headDate, headMorning, headEvening;
-  dateHead = 'Дата';
+function isLangRu() {
+  return (curLang === langRU);
+}
+
+function changeLang() {
+  let classBlock, headQuote, headButtonRefresh, headCheckTasks, headDate, headMorning, headEvening;
+  setCurLang();
+  localStorage.setItem('Lang', curLang);
   if (isLangRu()) {
-    classBlock += 'showBlock';
-    headQuote = 'Помни о важных вещах !';
-    headButtonRefresh = 'Обновить даты';
-    headCheckTasks = 'Отметь дела';
+    // classBlock = 'quote showBlock';
+    headQuote = 'Помни о важных делах !';
+    // headButtonRefresh = 'Обновить даты';
+    headCheckTasks = 'Отмечай дела';
     headDate = 'Дата';
     headMorning = 'Утро';
     headEvening = 'Вечер';
   } else {
-    classBlock += 'hiddenBlock';
+    // classBlock = 'quote hiddenBlock';
     headQuote = 'Remember important things !';
-    headButtonRefresh = 'Refresh dates';
+    // headButtonRefresh = 'Refresh dates';
     headCheckTasks = 'Check tasks';
     headDate = 'Date';
     headMorning = 'Morning';
@@ -54,16 +64,19 @@ function setLang() {
   }
   // document.querySelector('.quote').setAttribute('class', classBlock);
   document.querySelector('.quote').textContent = headQuote;
-  document.querySelector('.buttonRefresh').value = headButtonRefresh;
-  document.querySelector('.buttonRefresh').title = headButtonRefresh;
+  // document.querySelector('.buttonRefresh').value = headButtonRefresh;
+  // document.querySelector('.buttonRefresh').title = headButtonRefresh;
   document.querySelector('.CheckTasks').textContent = headCheckTasks;
   document.querySelector('.Date').textContent = headDate;
   document.querySelector('.Morning').textContent = headMorning;
   document.querySelector('.Evening').textContent = headEvening;
+
+  fillQuote();
 }
 
 ///////////////////////////////////////////////////////////
-function refreshDates() {
+
+function refreshData() {
   getDataFromStorageAndFillForm();
 
   let yestDateStr = getDateYYYYMMDD(getYesterday(new Date()));
@@ -91,56 +104,7 @@ function refreshDates() {
     document.getElementById('elemCheckRow2Task2').checked = false;
   }
 
-  fillQuote('RU');
-}
-
-function getDataFromStorageAndFillForm() {
-  setDate('Date1');
-  setDate('Date2');
-
-  setCheckRowTask('Row1Task1');
-  setCheckRowTask('Row1Task2');
-  setCheckRowTask('Row2Task1');
-  setCheckRowTask('Row2Task2');
-}
-
-//dateName: 'Date1', 'Date2'
-function setDate(dateName) {
-  let v = localStorage.getItem(dateName);
-  if (v === '' || v === null) {
-    let curDate = new Date();
-    let date = (dateName === 'Date1') ? getYesterday(curDate) : curDate;
-    v = getDateYYYYMMDD(date);
-  }
-  document.getElementById('elemText' + dateName).value = v;
-}
-
-//rowTaskName: 'Row1Task1', 'Row1Task2', ...
-function setCheckRowTask(rowTaskName) {
-  let v = localStorage.getItem(rowTaskName + 'Checked');
-  document.getElementById('elemCheck' + rowTaskName).checked = (v === '1' ? true : false);
-}
-
-function setAllDataToStorage() {
-  saveDateToStorage('Date1');
-  saveDateToStorage('Date2');
-
-  saveCheckToStorage('Row1Task1');
-  saveCheckToStorage('Row1Task2');
-  saveCheckToStorage('Row2Task1');
-  saveCheckToStorage('Row2Task2');
-}
-
-//dateName: 'Date1', 'Date2'
-function saveDateToStorage(dateName) {
-  let v = document.getElementById('elemText' + dateName).value;
-  localStorage.setItem(dateName, v);
-}
-
-//rowTaskName: 'Row1Task1', 'Row1Task2', ...
-function saveCheckToStorage(rowTaskName) {
-  let v = document.getElementById('elemCheck' + rowTaskName).checked;
-  localStorage.setItem(rowTaskName + 'Checked', v ? '1' : '0');
+  fillQuote();
 }
 
 ///////////////////////////////////////////////////////////
@@ -164,7 +128,7 @@ function saveCheckToStorage(rowTaskName) {
 //   document.querySelector('.quote').textContent = response.quoteText + ' (' + response.quoteAuthor + ')';
 // }
 
-function fillQuote(lang) {
+function fillQuote() {
   if (!isLangRu()) {
     return;
   }
@@ -213,6 +177,75 @@ function fillQuote(lang) {
   let random = quotes[Math.floor(Math.random() * quotes.length)];
   document.querySelector('.quote').textContent = `“${random.quote}” - ${random.source}`;
 }
+
+///////////////////////////////////////////////////////////
+
+// function getLangFromStorageAndApplyThisLang() {
+//   let v = localStorage.getItem('Lang');
+//   curLang = (v === "" || v === langRU) ? langRU : langEN;
+// }
+
+function getDataFromStorageAndFillForm() {
+
+  //switch to saved lang
+  let v = localStorage.getItem('Lang');
+  curLang = (v === "" || v === langRU) ? langRU : langEN;
+  // document.getElementById('langSelect').value = curLang;
+  let ar = document.getElementById('langSelect').options;
+  for (let i = 0; i < ar.length; i++) {
+    if (ar[i].text === curLang) ar[i].selected = true;
+  }
+
+  changeLang();
+
+  setDate('Date1');
+  setDate('Date2');
+
+  setCheckRowTask('Row1Task1');
+  setCheckRowTask('Row1Task2');
+  setCheckRowTask('Row2Task1');
+  setCheckRowTask('Row2Task2');
+}
+
+//dateName: 'Date1', 'Date2'
+function setDate(dateName) {
+  let v = localStorage.getItem(dateName);
+  if (v === '' || v === null) {
+    let curDate = new Date();
+    let date = (dateName === 'Date1') ? getYesterday(curDate) : curDate;
+    v = getDateYYYYMMDD(date);
+  }
+  document.getElementById('elemText' + dateName).value = v;
+}
+
+//rowTaskName: 'Row1Task1', 'Row1Task2', ...
+function setCheckRowTask(rowTaskName) {
+  let v = localStorage.getItem(rowTaskName + 'Checked');
+  document.getElementById('elemCheck' + rowTaskName).checked = (v === '1' ? true : false);
+}
+
+function setAllDataToStorage() {
+  saveDateToStorage('Date1');
+  saveDateToStorage('Date2');
+
+  saveCheckToStorage('Row1Task1');
+  saveCheckToStorage('Row1Task2');
+  saveCheckToStorage('Row2Task1');
+  saveCheckToStorage('Row2Task2');
+}
+
+//dateName: 'Date1', 'Date2'
+function saveDateToStorage(dateName) {
+  let v = document.getElementById('elemText' + dateName).value;
+  localStorage.setItem(dateName, v);
+}
+
+//rowTaskName: 'Row1Task1', 'Row1Task2', ...
+function saveCheckToStorage(rowTaskName) {
+  let v = document.getElementById('elemCheck' + rowTaskName).checked;
+  localStorage.setItem(rowTaskName + 'Checked', v ? '1' : '0');
+}
+
 ///////////////////////////////////////////////////////////
 
 //get date & time in: YYYY-MM-DD HH:MM:SS
