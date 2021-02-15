@@ -13,7 +13,7 @@
 <body>
 
   <header>
-    <div class="quote">Remember important things !</div>
+    <div class="quote showBlock">Remember important things !</div>
   </header>
 
   <main>
@@ -22,11 +22,11 @@
     <br><br>
     <form>
       <fieldset>
-        <legend><em><strong>Check tasks</strong></em></legend>
+        <legend><em><strong class="CheckTasks">Check tasks</strong></em></legend>
         <div class="wrapper">
-          <div>Date</div>
-          <div>Morning</div>
-          <div>Evening</div>
+          <div class="Date">Date</div>
+          <div class="Morning">Morning</div>
+          <div class="Evening">Evening</div>
         </div>
         <br>
         <div class="wrapper">
@@ -47,13 +47,18 @@
   <footer>
     <br>
     bovgit © 2021
+    <select id="langSelect" name="langSelect">
+      <option>RU</option>
+      <option>EN</option>
+    </select>
+
   </footer>
 
   <!-- Lichess: daily puzzle -->
-  <br>
+  <!-- <br>
   <iframe src="https://lichess.org/training/frame?theme=wood&bg=light" style="width: 400px; height: 444px;"
     allowtransparency="true" frameborder="0">
-  </iframe>
+  </iframe> -->
 
   <noscript><em>You need to enable JavaScript to run this app !!!</em></noscript>
 

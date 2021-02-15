@@ -16,7 +16,51 @@ elemCheckRow1Task2.onclick = () => setAllDataToStorage();
 elemCheckRow2Task1.onclick = () => setAllDataToStorage();
 elemCheckRow2Task2.onclick = () => setAllDataToStorage();
 
+langSelect.onchange = () => setLang();
+
 refreshDates();
+
+///////////////////////////////////////////////////////////
+
+function isLangRu() {
+  const elem = document.getElementById('langSelect');
+  const sel = elem.selectedIndex;
+  if (sel === -1) { return true };
+  const option = elem.options[sel].text;
+  if (option === 'RU') { return true };
+  return false;
+}
+
+function setLang() {
+  let classBlock = 'quote ';
+  let headQuote, headButtonRefresh, headCheckTasks, headDate, headMorning, headEvening;
+  dateHead = 'Дата';
+  if (isLangRu()) {
+    classBlock += 'showBlock';
+    headQuote = 'Помни о важных вещах !';
+    headButtonRefresh = 'Обновить даты';
+    headCheckTasks = 'Отметь дела';
+    headDate = 'Дата';
+    headMorning = 'Утро';
+    headEvening = 'Вечер';
+  } else {
+    classBlock += 'hiddenBlock';
+    headQuote = 'Remember important things !';
+    headButtonRefresh = 'Refresh dates';
+    headCheckTasks = 'Check tasks';
+    headDate = 'Date';
+    headMorning = 'Morning';
+    headEvening = 'Evening';
+  }
+  // document.querySelector('.quote').setAttribute('class', classBlock);
+  document.querySelector('.quote').textContent = headQuote;
+  document.querySelector('.buttonRefresh').value = headButtonRefresh;
+  document.querySelector('.buttonRefresh').title = headButtonRefresh;
+  document.querySelector('.CheckTasks').textContent = headCheckTasks;
+  document.querySelector('.Date').textContent = headDate;
+  document.querySelector('.Morning').textContent = headMorning;
+  document.querySelector('.Evening').textContent = headEvening;
+}
 
 ///////////////////////////////////////////////////////////
 function refreshDates() {
@@ -47,12 +91,12 @@ function refreshDates() {
     document.getElementById('elemCheckRow2Task2').checked = false;
   }
 
-  fillQuote('ru');
+  fillQuote('RU');
 }
 
 function getDataFromStorageAndFillForm() {
-  setDate("Date1");
-  setDate("Date2");
+  setDate('Date1');
+  setDate('Date2');
 
   setCheckRowTask('Row1Task1');
   setCheckRowTask('Row1Task2');
@@ -65,7 +109,7 @@ function setDate(dateName) {
   let v = localStorage.getItem(dateName);
   if (v === '' || v === null) {
     let curDate = new Date();
-    let date = (dateName === "Date1") ? getYesterday(curDate) : curDate;
+    let date = (dateName === 'Date1') ? getYesterday(curDate) : curDate;
     v = getDateYYYYMMDD(date);
   }
   document.getElementById('elemText' + dateName).value = v;
@@ -121,6 +165,10 @@ function saveCheckToStorage(rowTaskName) {
 // }
 
 function fillQuote(lang) {
+  if (!isLangRu()) {
+    return;
+  }
+
   const quotes = [
     { 'quote': 'Без знатных дел знатное состояние ничто.', 'source': 'Фонвизин Д.И.' },
     { 'quote': 'Важно не звание человека, а его дело.', 'source': 'Плиний Младший' },
