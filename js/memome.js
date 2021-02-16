@@ -28,12 +28,6 @@ refreshData();
 function setCurLang() {
   const elem = document.getElementById('langSelect');
   const sel = elem.selectedIndex;
-
-  // if (sel === -1) { return true };
-  // const option = elem.options[sel].text;
-  // if (option === 'RU') { return true };
-  // return false;
-
   curLang = (sel === -1 || elem.options[sel].text === langRU) ? langRU : langEN;
 }
 
@@ -190,11 +184,11 @@ function getDataFromStorageAndFillForm() {
   //switch to saved lang
   let v = localStorage.getItem('Lang');
   curLang = (v === "" || v === langRU) ? langRU : langEN;
-  // document.getElementById('langSelect').value = curLang;
-  let ar = document.getElementById('langSelect').options;
-  for (let i = 0; i < ar.length; i++) {
-    if (ar[i].text === curLang) ar[i].selected = true;
-  }
+  document.getElementById('langSelect').value = curLang;
+  // let ar = document.getElementById('langSelect').options;
+  // for (let i = 0; i < ar.length; i++) {
+  //   if (ar[i].text === curLang) ar[i].selected = true;
+  // }
 
   changeLang();
 
