@@ -14,89 +14,104 @@
 
   <header>
     <div class="quote showBlock">Помни о важных делах !</div>
+    <br>
   </header>
 
-  <main>
-    <br>
-    <!-- <br>
-    <input class="buttonRefresh" type="button" value="Обновить даты" id="buttonRefresh" title="Обновить даты">
-    <br><br> -->
-    <form>
-      <fieldset>
-        <legend><em><strong class="CheckTasks">Отмечай дела</strong></em></legend>
-        <div class="wrapper">
-          <div class="Date">Дата</div>
-          <div class="Morning">Утро</div>
-          <div class="Evening">Вечер</div>
-        </div>
-        <br>
-        <div class="wrapper">
-          <input class="inputText" type="text" id="elemTextDate1" title="Date1" readonly>
-          <input class="inputCheck" type="checkbox" id="elemCheckRow1Task1" title="Check Task1 for Date1">
-          <input class="inputCheck" type="checkbox" id="elemCheckRow1Task2" title="Check Task2 for Date1">
-        </div>
-        <br>
-        <div class="wrapper">
-          <input class="inputText" type="text" id="elemTextDate2" title="Date2" readonly>
-          <input class="inputCheck" type="checkbox" id="elemCheckRow2Task1" title="Check Task1 for Date2">
-          <input class="inputCheck" type="checkbox" id="elemCheckRow2Task2" title="Check Task2 for Date2">
-        </div>
-      </fieldset>
-    </form>
-  </main>
+  <sectionrow>
+    <sectioncol>
+      <!-- <br>
+        <input class="buttonRefresh" type="button" value="Обновить даты" id="buttonRefresh" title="Обновить даты">
+        <br><br> -->
+      <form>
+        <fieldset>
+          <legend><em><strong class="CheckTasks">Отмечай дела</strong></em></legend>
+          <div class="wrapper">
+            <div class="Date">Дата</div>
+            <div class="Morning">Утро</div>
+            <div class="Evening">Вечер</div>
+          </div>
+          <br>
+          <div class="wrapper">
+            <input class="inputText" type="text" id="elemTextDate1" title="Date1" readonly>
+            <input class="inputCheck" type="checkbox" id="elemCheckRow1Task1" title="Check Task1 for Date1">
+            <input class="inputCheck" type="checkbox" id="elemCheckRow1Task2" title="Check Task2 for Date1">
+          </div>
+          <br>
+          <div class="wrapper">
+            <input class="inputText" type="text" id="elemTextDate2" title="Date2" readonly>
+            <input class="inputCheck" type="checkbox" id="elemCheckRow2Task1" title="Check Task1 for Date2">
+            <input class="inputCheck" type="checkbox" id="elemCheckRow2Task2" title="Check Task2 for Date2">
+          </div>
+        </fieldset>
+      </form>
 
-  <footer>
-    <p>
-      bovgit © 2021
-      <select id="langSelect" name="langSelect">
-        <option value="RU">RU</option>
-        <option value="EN">EN</option>
-      </select>
-    </p>
-  </footer>
+      <footer>
+        <p>
+          bovgit © 2021
+          <select id="langSelect" name="langSelect">
+            <option value="RU">RU</option>
+            <option value="EN">EN</option>
+          </select>
+        </p>
+      </footer>
 
-  <!-- Lichess: daily puzzle -->
-  <!-- <br>
-  <iframe src="https://lichess.org/training/frame?theme=wood&bg=light" style="width: 400px; height: 444px;"
-    allowtransparency="true" frameborder="0">
-  </iframe> -->
+      <!-- Lichess: daily puzzle -->
+      <!-- <br>
+      <iframe src="https://lichess.org/training/frame?theme=wood&bg=light" style="width: 400px; height: 444px;"
+        allowtransparency="true" frameborder="0">
+      </iframe> -->
 
-  <!-- Weather in ilichivsk 7 days -->
-  <div id="1ceb0cb6bd1bcc145199521cc23325d6" class="ww-informers-box-854753">
-    <p class="ww-informers-box-854754"><a href="https://world-weather.ru/pogoda/ukraine/ilichivsk/month/"></a></p>
-  </div>
-  <script async type="text/javascript" charset="utf-8"
-    src="https://world-weather.ru/wwinformer.php?userid=1ceb0cb6bd1bcc145199521cc23325d6"></script>
+      <!-- Weather in ilichivsk 7 days -->
+      <div id="1ceb0cb6bd1bcc145199521cc23325d6" class="ww-informers-box-854753">
+        <p class="ww-informers-box-854754"><a href="https://world-weather.ru/pogoda/ukraine/ilichivsk/month/"></a></p>
+      </div>
+      <script async type="text/javascript" charset="utf-8"
+        src="https://world-weather.ru/wwinformer.php?userid=1ceb0cb6bd1bcc145199521cc23325d6"></script>
 
-  <!-- Weather in ovidiopol 7 days -->
-  <div id="4a5f5cc94bc7e5a89e54f4bfd43e878b" class="ww-informers-box-854753">
-    <p class="ww-informers-box-854754"><a href="https://world-weather.ru/pogoda/ukraine/ovidiopol/"></a></p>
-  </div>
-  <script async type="text/javascript" charset="utf-8"
-    src="https://world-weather.ru/wwinformer.php?userid=4a5f5cc94bc7e5a89e54f4bfd43e878b"></script>
+      <!-- Weather in ovidiopol 7 days -->
+      <div id="4a5f5cc94bc7e5a89e54f4bfd43e878b" class="ww-informers-box-854753">
+        <p class="ww-informers-box-854754"><a href="https://world-weather.ru/pogoda/ukraine/ovidiopol/"></a></p>
+      </div>
+      <script async type="text/javascript" charset="utf-8"
+        src="https://world-weather.ru/wwinformer.php?userid=4a5f5cc94bc7e5a89e54f4bfd43e878b"></script>
 
-  <!-- геомагнит в ильичевске -->
-  <div id="fe68d450b2abdf59598136da8f7fd9e3" class="ww-informers-box-854753">
-    <p class="ww-informers-box-854754"><a
-        href="https://world-weather.ru/pogoda/ukraine/ilichivsk/">world-weather.ru/pogoda/ukraine/ilichivsk/</a></p>
-  </div>
-  <script async type="text/javascript" charset="utf-8"
-    src="https://world-weather.ru/wwinformer.php?userid=fe68d450b2abdf59598136da8f7fd9e3"></script>
+      <!-- геомагнит в ильичевске -->
+      <div id="fe68d450b2abdf59598136da8f7fd9e3" class="ww-informers-box-854753">
+        <p class="ww-informers-box-854754"><a
+            href="https://world-weather.ru/pogoda/ukraine/ilichivsk/">world-weather.ru/pogoda/ukraine/ilichivsk/</a></p>
+      </div>
+      <script async type="text/javascript" charset="utf-8"
+        src="https://world-weather.ru/wwinformer.php?userid=fe68d450b2abdf59598136da8f7fd9e3"></script>
 
-  <!-- курс валют -->
-  <br>
-  <iframe src="//old.kurs.com.ua/informer/inf2/824?color=blue" width="320" height="130" frameborder="0" vspace="0"
-    scrolling="no" hspace="0"></iframe>
+    </sectioncol>
 
-  <!-- fuel vseazs.com -->
-  <a id="vseazs_informer" class="vseazs-informer" href="https://vseazs.com"></a>
-  <script type="text/javascript" charset="UTF-8" src="https://vseazs.com/inf.php?reg=15&fuels=11110001"></script>
+    <sectioncol>
 
-  <!-- праздники -->
-  <a href="https://www.calend.ru/holidays/ukraine/" target="_blank"><img
-      src="https://www.calend.ru/img/export/informer_6.png" width="150" alt="Праздники Украины" border="0"></a>
-  <a href="https://www.calend.ru/holidays/orthodox/" target="_blank"><img
-      src="https://www.calend.ru/img/export/informer_2.png" width="150" alt="Православные праздники" border="0"></a>
+      <sectioncol>
+        <!-- курс валют -->
+        <iframe src="//old.kurs.com.ua/informer/inf2/824?color=blue" width="320" height="130" frameborder="0" vspace="0"
+          scrolling="no" hspace="0"></iframe>
+      </sectioncol>
+
+      <sectioncol>
+        <!-- праздники -->
+        <sectionrow>
+          <a href="https://www.calend.ru/holidays/ukraine/" target="_blank"><img
+              src="https://www.calend.ru/img/export/informer_6.png" width="150" alt="Праздники Украины" border="0"></a>
+          <a href="https://www.calend.ru/holidays/orthodox/" target="_blank"><img
+              src="https://www.calend.ru/img/export/informer_2.png" width="150" alt="Православные праздники"
+              border="0"></a>
+        </sectionrow>
+
+      </sectioncol>
+
+      <sectioncol>
+        <!-- fuel vseazs.com -->
+        <a id="vseazs_informer" class="vseazs-informer" href="https://vseazs.com"></a>
+        <script type="text/javascript" charset="UTF-8" src="https://vseazs.com/inf.php?reg=15&fuels=11110001"></script>
+      </sectioncol>
+    </sectioncol>
+  </sectionrow>
 
   <noscript><em>You need to enable JavaScript to run this app !!!</em></noscript>
 

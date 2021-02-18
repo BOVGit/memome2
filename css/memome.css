@@ -30,6 +30,19 @@
   display: none;
 }
 
+/* ----- flex (under footer) ---------------- */
+
+sectionrow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+sectioncol {
+  display: flex;
+  flex-direction: column;
+}
+
 /* ------ copied for https://world-weather.ru/informers --------------- */
 
 .ww-informers-box-854754 {
