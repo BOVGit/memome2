@@ -11,15 +11,15 @@ let curLang = langRU;
 
 // buttonRefresh.onclick = () => refreshData();
 
-elemTextDate1.onchange = () => setAllDataToStorage();
-elemTextDate2.onchange = () => setAllDataToStorage();
+document.querySelector('#elemTextDate1').onchange = () => setAllDataToStorage();
+document.querySelector('#elemTextDate2').onchange = () => setAllDataToStorage();
 
-elemCheckRow1Task1.onclick = () => setAllDataToStorage();
-elemCheckRow1Task2.onclick = () => setAllDataToStorage();
-elemCheckRow2Task1.onclick = () => setAllDataToStorage();
-elemCheckRow2Task2.onclick = () => setAllDataToStorage();
+document.querySelector('#elemCheckRow1Task1').onclick = () => setAllDataToStorage();
+document.querySelector('#elemCheckRow1Task2').onclick = () => setAllDataToStorage();
+document.querySelector('#elemCheckRow2Task1').onclick = () => setAllDataToStorage();
+document.querySelector('#elemCheckRow2Task2').onclick = () => setAllDataToStorage();
 
-langSelect.onchange = () => changeLang();
+document.querySelector('#langSelect').onchange = () => changeLang();
 
 refreshData();
 
