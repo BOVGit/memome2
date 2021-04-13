@@ -1,4 +1,4 @@
-//v1.0.4 2021-02-15
+//v1.0.5 2021-04-13
 //let urlHttpServiceQuote = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=text&key=1&lang=';
 //let urlHttpServiceQuote = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&jsonp=parseQuote&key=1&lang=';
 // let urlHttpServiceQuote = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&jsonp=parseQuote';
@@ -16,14 +16,33 @@ document.querySelector('#elemTextDate2').onchange = () => setAllDataToStorage();
 
 document.querySelector('#elemCheckRow1Task1').onclick = () => setAllDataToStorage();
 document.querySelector('#elemCheckRow1Task2').onclick = () => setAllDataToStorage();
-document.querySelector('#elemCheckRow2Task1').onclick = () => setAllDataToStorage();
-document.querySelector('#elemCheckRow2Task2').onclick = () => setAllDataToStorage();
+document.querySelector('#elemCheckRow2Task1').onclick = () => checkRow2Task1();
+document.querySelector('#elemCheckRow2Task2').onclick = () => checkRow2Task2();
 
 document.querySelector('#langSelect').onchange = () => changeLang();
 
 refreshData();
 
 ///////////////////////////////////////////////////////////
+
+function checkRow2Task1() {
+  setAllDataToStorage();
+  const subject = isLangRu() ? 'утро' : 'morning';
+  sendMail(subject);
+}
+
+function checkRow2Task2() {
+  setAllDataToStorage();
+  const subject = isLangRu() ? 'вечер' : 'evening';
+  sendMail(subject);
+}
+
+function sendMail(pSubject) {
+  const subject = pSubject + ' ' + document.getElementById('elemTextDate2').value.trim();
+  const body = '';
+  const addr = 'olb' + 'el6' + 'pm@g' + 'mai' + 'l.com';
+  window.open('mailto:' + addr + '?subject=' + subject + '&body=' + body);
+}
 
 function setCurLang() {
   const elem = document.getElementById('langSelect');
