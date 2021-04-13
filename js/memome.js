@@ -27,14 +27,18 @@ refreshData();
 
 function checkRow2Task1() {
   setAllDataToStorage();
-  const subject = isLangRu() ? 'утро' : 'morning';
-  sendMail(subject);
+  if (document.querySelector('#elemCheckRow2Task1').checked) {
+    const subject = isLangRu() ? 'утро' : 'morning';
+    sendMail(subject);
+  }
 }
 
 function checkRow2Task2() {
   setAllDataToStorage();
-  const subject = isLangRu() ? 'вечер' : 'evening';
-  sendMail(subject);
+  if (document.querySelector('#elemCheckRow2Task2').checked) {
+    const subject = isLangRu() ? 'вечер' : 'evening';
+    sendMail(subject);
+  }
 }
 
 function sendMail(pSubject) {
