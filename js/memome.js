@@ -1,4 +1,6 @@
-//v1.0.5 2021-04-13
+//v1.0.6 2021-04-14
+'use strict';
+
 //let urlHttpServiceQuote = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=text&key=1&lang=';
 //let urlHttpServiceQuote = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&jsonp=parseQuote&key=1&lang=';
 // let urlHttpServiceQuote = 'https://api.forismatic.com/api/1.0/?method=getQuote&format=jsonp&jsonp=parseQuote';
